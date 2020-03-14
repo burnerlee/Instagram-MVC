@@ -8,5 +8,5 @@ Toro::serve(array(
     "/explore" => "\Controller\Explore",
     "/post" => "\Controller\Post",
     "/signup" => "\Controller\Signup",
-    
+    "/addComment"=> "\Controller\Comment",
 ));

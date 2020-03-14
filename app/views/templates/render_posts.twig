@@ -23,10 +23,7 @@
                 <input type="text" placeholder="Search">
             </div>
             <div class="navigation__icons">
-                <a href="/post" class="navigation__link">
-                    <i class="fa fa-camera"></i>
-                </a>
-                <a href="explore.html" class="navigation__link">
+                <a href="/po lore.html" class="navigation__link">
                     <i class="fa fa-compass"></i>
                 </a>
                 <a href="#" class="navigation__link">
@@ -77,16 +74,24 @@
                     </li>
                     </ul>
                     <ul class="photo__comments"> 
+
+                        {% for comment in comments %}
+                         {% if (comment.feed_id==feed.id) %}
                         <li class="photo__comment">
-                            <span class="photo__comment-author">serranoarevalo</span>wow this is great!
+                       
+                            <span class="photo__comment-author">serranoarevalo</span>{{comment.comment}}
+                          
                         </li>
-                        <li class="photo__comment">
-                            <span class="photo__comment-author">lynn</span>no is not!
-                        </li>
+                          {% endif %}
+                       {% endfor %}
                     </ul>
                     <span class="photo__time-ago">{{feed.time}}</span>
                     <div class="photo__add-comment-container">
-                        <textarea placeholder="Add a comment..." class="photo__add-comment"></textarea>
+                        <form method="post" action="/addComment"> 
+                        <input value={{feed.id}} name="id" hidden></input>
+                        <textarea placeholder="Add a comment..." class="photo__add-comment" name="comment" required></textarea>
+                        <input type="submit"></input>
+                        </form>
                         <i class="fa fa-ellipsis-h"></i>
                     </div>
                 </div>

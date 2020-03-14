@@ -7,8 +7,7 @@ class Comment {
      $id=$_POST["id"];
      $comment=$_POST["comment"];
      \Model\Comment::addComment($id,$comment);   
-     
-     header("Location:/feed");
+     header("Location: /feed");
     }
    
     
