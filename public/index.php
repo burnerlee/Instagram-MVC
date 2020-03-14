@@ -7,5 +7,6 @@ Toro::serve(array(
     "/feed" => "\Controller\Feed",
     "/explore" => "\Controller\Explore",
     "/post" => "\Controller\Post",
+    "/signup" => "\Controller\Signup",
     
 ));
