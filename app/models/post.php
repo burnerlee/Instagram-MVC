@@ -3,25 +3,24 @@
 namespace Model;
 
 class Post {
-    public static function create($caption) {
-        $db = \DB::get_instance();
-        $stmt = $db->prepare("INSERT INTO posts (caption) VALUES (?)");
-        $stmt->execute([$caption]);
-    }
 
-    public static function get_all() {
+    public static function create($filepath,$caption) {
         $db = \DB::get_instance();
-        $stmt = $db->prepare("SELECT * FROM posts");
-        $stmt->execute();
-        $rows = $stmt->fetchAll();
-        return $rows;
-    }
+        $username="burnerlee";
+        $like=0;
+        $data = [
 
-    public static function find($id) {
-        $db = \DB::get_instance();
-        $stmt = $db->prepare("SELECT * FROM posts WHERE id = ?");
-        $stmt->execute([$id]);
-        $row = $stmt->fetch();
-        return $row;
+            'img_username' => $username,
+            'img' => $filepath,
+            'img_owner' => $filepath,
+            'no_of_like' => $like,
+            'caption' => $caption
+        ];
+        $sql = "INSERT INTO feeds (img_username,img,img_owner,no_of_like,caption) VALUES (:img_username,:img,:img_owner,:no_of_like,:caption)";
+        $stmt = $db->prepare($sql);
+        $stmt->execute($data);
+       
     }
+    
+    
 }
