@@ -64,10 +64,14 @@
                 <div class="photo__info">
                     <div class="photo__icons">
                         <span class="photo__icon">
+                            <a href="/Like?feed_id={{feed.id}}">
                             <i class="fa fa-heart-o heart fa-lg"></i>
+                            </a>
                         </span>
                         <span class="photo__icon">
+                        <a href="#comment_text">
                             <i class="fa fa-comment-o fa-lg"></i>
+                            </a>
                         </span>
                     </div>
                     <span class="photo__likes">{{feed.no_of_likes}} Likes</span>
@@ -92,7 +96,7 @@
                     <div class="photo__add-comment-container">
                         <form method="post" action="/addComment"> 
                         <input value={{feed.id}} name="id" hidden></input>
-                        <textarea placeholder="Add a comment..." class="photo__add-comment" name="content" required></textarea>
+                        <textarea id="comment_text" placeholder="Add a comment..." class="photo__add-comment" name="content" required></textarea>
                         <input type="submit"></input>
                         </form>
                         <i class="fa fa-ellipsis-h"></i>

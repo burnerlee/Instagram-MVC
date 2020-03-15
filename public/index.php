@@ -11,5 +11,5 @@ Toro::serve(array(
     "/signup" => "\Controller\Signup",
     "/addComment"=> "\Controller\Comment",
     "/logout"=> "\Controller\Logout",
-    
+    "/Like"=>"\Controller\Like",
 ));
