@@ -1,7 +1,7 @@
 <?php
 
 namespace Controller;
-
+session_start();
 class Post {
     public function get() {
      echo \View\Loader::make()->render("templates/post.twig");
@@ -12,7 +12,8 @@ class Post {
         $caption=$_POST["caption"];;
         move_uploaded_file( $_FILES["img_file"]["tmp_name"], $filePath.$filename);
         $filePath=$filePath.$filename;
-        \Model\Post::create($filePath,$caption);
+        $username=$_SESSION["username"];
+        \Model\Post::create($username,$filePath,$caption);
         header("Location:/feed");
   
     }

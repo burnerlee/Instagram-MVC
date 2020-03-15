@@ -23,6 +23,9 @@
                 <input type="text" placeholder="Search">
             </div>
             <div class="navigation__icons">
+                <a href="/post" class="navigation__link">
+                    <i class="fa fa-camera"></i>
+                </a>
                 <a href="/po lore.html" class="navigation__link">
                     <i class="fa fa-compass"></i>
                 </a>
@@ -41,11 +44,11 @@
                     <div class="photo__header-column">
                         <img
                             class="photo__avatar"
-                            src="{{feed.img_owner}}"
+                            src="{{feed.user_image}}"
                         />
                     </div>
                     <div class="photo__header-column">
-                        <span class="photo__username">{{feed.img_username}}</span>
+                        <span class="photo__username">{{feed.username}}</span>
                         
                     </div>
                 </header>
@@ -56,7 +59,7 @@
                     />
                 </div>
                 <div class="caption">
-                </span>{{feed.capt}}
+                </span>
                 </div>
                 <div class="photo__info">
                     <div class="photo__icons">
@@ -67,10 +70,10 @@
                             <i class="fa fa-comment-o fa-lg"></i>
                         </span>
                     </div>
-                    <span class="photo__likes">{{feed.no_of_like}} Likes</span>
+                    <span class="photo__likes">{{feed.no_of_likes}} Likes</span>
                     <ul class="photo__comments"> 
                     <li>
-                    <span class="photo__likes">{{feed.img_username}}....{{feed.caption}}
+                    <span class="photo__likes">{{feed.username}}....{{feed.caption}}
                     </li>
                     </ul>
                     <ul class="photo__comments"> 
@@ -111,6 +114,7 @@
                     <li class="footer__list-item"><a href="#" class="footer__link">terms</a></li>
                     <li class="footer__list-item"><a href="#" class="footer__link">directory</a></li>
                     <li class="footer__list-item"><a href="#" class="footer__link">language</a></li>
+                    <li class="footer__list-item"><a href="#" class="footer__link">Log out</a></li>
                 </ul>
             </nav>
             <span class="footer__copyright">© 2021 instagram@SDSLabs</span>

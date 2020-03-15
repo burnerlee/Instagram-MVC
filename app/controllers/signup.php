@@ -10,7 +10,8 @@ class Signup {
         $username=$_POST["username"];
         $password=$_POST["password"];
         $contact=$_POST["contact-details"];
-        \Model\User::createUser($username,$password,$contact);
+        $name=$_POST["name"];
+        \Model\User::createUser($username,$password,$contact,$name);
         header("Location: /");
     }
     

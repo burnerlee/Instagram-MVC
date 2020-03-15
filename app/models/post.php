@@ -4,23 +4,17 @@ namespace Model;
 
 class Post {
 
-    public static function create($filepath,$caption) {
+    public static function create($username,$filepath,$caption) {
         $db = \DB::get_instance();
-        $username="burnerlee";
-        $like=0;
+        $tableName="feeds";
         $data = [
-
-            'img_username' => $username,
+            'username'=> $username,
             'img' => $filepath,
-            'img_owner' => $filepath,
-            'no_of_like' => $like,
-            'caption' => $caption
+            'caption' => $caption,
+            "no_of_likes" => 0
         ];
-        $sql = "INSERT INTO feeds (img_username,img,img_owner,no_of_like,caption) VALUES (:img_username,:img,:img_owner,:no_of_like,:caption)";
+        $sql = "INSERT INTO $tableName (username,img,caption,no_of_likes) VALUES (:username,:img,:caption,:no_of_likes)";
         $stmt = $db->prepare($sql);
         $stmt->execute($data);
-       
     }
-    
-    
 }

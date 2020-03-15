@@ -1,5 +1,6 @@
 <?php
-
+session_start();
+$_SESSION["authenticated"]=false;
 require __DIR__."/../vendor/autoload.php";
 
 Toro::serve(array(

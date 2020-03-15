@@ -24,6 +24,16 @@ class Comment {
         $rows = $stmt->fetchAll();
         return $rows;
     }
-    
+    public static function createCommentTable($username){
+        $db = \DB::get_instance();
+        $tableName=$username."CommmentTable";
+        $sql = "CREATE TABLE $tableName (
+            id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            feed_id INT NOT NULL,
+            comment VARCHAR(30) NOT NULL
+            )";
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+    }
     
 }
