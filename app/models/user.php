@@ -77,17 +77,35 @@ class User {
                 echo "error";
             }
     }
-    public static function updateUserData($name,$bio,$email,$gender){
+    public static function updateUserData($name,$bio,$email,$gender,$filepath){
         $db = \DB::get_instance();
-        $sql = "UPDATE users SET name=:name,bio=:bio,email=:email,gender=:gender WHERE username=:username";
+        $sql = "UPDATE users SET name=:name,email=:email,gender=:gender WHERE username=:username";
         $data=[
             ":name"=>$name,
-            ":bio"=>$bio,
             ":email"=>$email,
-            ":gender"=>$gender,
+            ":gender"=>$gender,            
             ":username"=>$_SESSION["username"]
         ];
         $stmt=$db->prepare($sql);
         $stmt->execute($data);
+        if($filepath=="assets/profile/"){}
+        else{
+            $sql = "UPDATE users SET user_image=:filepath WHERE username=:username";
+            $data=[
+                ":filepath"=>$filepath,            
+                ":username"=>$_SESSION["username"]
+            ];
+            $stmt=$db->prepare($sql);
+            $stmt->execute($data);
+        }
+        if(isset($bio)){}
+        else{
+            $sql = "UPDATE users SET bio=:bio WHERE username=:username";
+            $data=[
+                ":bio"=>$bio
+            ];
+            $stmt=$db->prepare($sql);
+            $stmt->execute($data);
+        }
     }
 }
