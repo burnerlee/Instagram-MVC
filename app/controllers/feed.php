@@ -20,7 +20,7 @@ class Feed {
         if($_SESSION["authenticated"]){
         echo \View\Loader::make()->render("templates/render_posts.twig",array(
         "feeds" => \Model\Feed::get_all(),
-        //  "comments" => \Model\Comment::getComments(),
+        "comments" => \Model\Comment::getComments(),
         ));
         }
         else{
@@ -34,7 +34,9 @@ class Feed {
         if($_SESSION["authenticated"]){
         echo \View\Loader::make()->render("templates/render_posts.twig",array(
         "feeds" => \Model\Feed::get_all(),
-        //  "comments" => \Model\Comment::getComments(),
+        "comments" => \Model\Comment::getComments(),
+    
+
         ));
         }
         else{

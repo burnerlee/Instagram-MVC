@@ -82,7 +82,7 @@
                          {% if (comment.feed_id==feed.id) %}
                         <li class="photo__comment">
                        
-                            <span class="photo__comment-author">serranoarevalo</span>{{comment.comment}}
+                            <span class="photo__comment-author">{{comment.commentor_username}}</span>{{comment.content}}
                           
                         </li>
                           {% endif %}
@@ -92,7 +92,7 @@
                     <div class="photo__add-comment-container">
                         <form method="post" action="/addComment"> 
                         <input value={{feed.id}} name="id" hidden></input>
-                        <textarea placeholder="Add a comment..." class="photo__add-comment" name="comment" required></textarea>
+                        <textarea placeholder="Add a comment..." class="photo__add-comment" name="content" required></textarea>
                         <input type="submit"></input>
                         </form>
                         <i class="fa fa-ellipsis-h"></i>

@@ -5,8 +5,9 @@ namespace Controller;
 class Comment {
     public function post() {
      $id=$_POST["id"];
-     $comment=$_POST["comment"];
-     \Model\Comment::addComment($id,$comment);   
+     $content=$_POST["content"];
+     $commentor_username=$_SESSION["username"];
+     \Model\Comment::addComment($id,$content,$commentor_username);   
      header("Location: /feed");
     }
    

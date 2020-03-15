@@ -4,36 +4,26 @@ namespace Model;
 
 class Comment {
 
-    public static function addComment($id,$comment) {
+    public static function addComment($id,$content,$commentor_username) {
         $db = \DB::get_instance();
         $data = [
 
             'feed_id' => $id,
-            'comment' => $comment,
-            
+            'content' => $content,
+            'commentor_username'=>$commentor_username,
         ];
-        $sql = "INSERT INTO comment (feed_id,comment) VALUES (:feed_id,:comment)";
+        $sql = "INSERT INTO comments (feed_id,content,commentor_username) VALUES (:feed_id,:content,:commentor_username)";
         $stmt = $db->prepare($sql);
         $stmt->execute($data);
        
     }
     public static function getComments(){
         $db = \DB::get_instance();
-        $stmt = $db->prepare("SELECT * FROM comment");
+        $stmt = $db->prepare("SELECT * FROM comments");
         $stmt->execute();
         $rows = $stmt->fetchAll();
         return $rows;
     }
-    public static function createCommentTable($username){
-        $db = \DB::get_instance();
-        $tableName=$username."CommmentTable";
-        $sql = "CREATE TABLE $tableName (
-            id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-            feed_id INT NOT NULL,
-            comment VARCHAR(30) NOT NULL
-            )";
-        $stmt = $db->prepare($sql);
-        $stmt->execute();
-    }
+    
     
 }
