@@ -10,4 +10,6 @@ Toro::serve(array(
     "/post" => "\Controller\Post",
     "/signup" => "\Controller\Signup",
     "/addComment"=> "\Controller\Comment",
+    "/logout"=> "\Controller\Logout",
+    
 ));
