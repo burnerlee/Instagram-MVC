@@ -13,4 +13,7 @@ Toro::serve(array(
     "/logout"=> "\Controller\Logout",
     "/Like"=>"\Controller\Like",
     "/profile"=>"\Controller\Profile",
+    "/edit"=>"\Controller\Edit",
+    "/editSubmit"=>"\Controller\EditSubmit",
+    
 ));

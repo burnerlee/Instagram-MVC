@@ -77,4 +77,17 @@ class User {
                 echo "error";
             }
     }
+    public static function updateUserData($name,$bio,$email,$gender){
+        $db = \DB::get_instance();
+        $sql = "UPDATE users SET name=:name,bio=:bio,email=:email,gender=:gender WHERE username=:username";
+        $data=[
+            ":name"=>$name,
+            ":bio"=>$bio,
+            ":email"=>$email,
+            ":gender"=>$gender,
+            ":username"=>$_SESSION["username"]
+        ];
+        $stmt=$db->prepare($sql);
+        $stmt->execute($data);
+    }
 }

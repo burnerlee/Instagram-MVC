@@ -2,16 +2,15 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Profile | Instaclone</title>
+        <title>Edit Profile | Instaclone</title>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
         <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
         <link href="/assets/css/style.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     </head>
     <body>
         <nav class="navigation">
-            <a href="/feed">
+            <a href="feed.html">
                 <img 
                     src="/assets/images/navLogo.png"
                     alt="logo"
@@ -24,9 +23,6 @@
                 <input type="text" placeholder="Search">
             </div>
             <div class="navigation__icons">
-            <a href="/post" class="navigation__link">
-                    <i class="fa fa-camera"></i>
-                </a>
                 <a href="" class="navigation__link">
                     <i class="fa fa-compass"></i>
                 </a>
@@ -38,58 +34,63 @@
                 </a>
             </div>
         </nav>
-        <main class="profile-container">
-            <section class="profile">
-                <header class="profile__header">
-                    <div class="profile__avatar-container">
+        <main class="edit-profile">
+            <section class="profile-form">
+                <header class="profile-form__header">
+                    <div class="profile-form__avatar-container">
                         <img 
                             src={{user.user_image}}
-                            class="profile__avatar"
-                            alt="No Profile Picture"
+                            class="profile-form__avatar"
                         />
                     </div>
-                    <div class="profile__info">
-                        <div class="profile__name">
-                            <h1 class="profile__title">{{user.username}}</h1>
-                            <a href="/edit" class="profile__button u-fat-text">Edit profile</a>
-                            <i class="fa fa-cog fa-2x" id="cog"></i>
-                        </div>
-                        <ul class="profile__numbers">
-                            <li class="profile__posts">
-                                <span class="profile__number u-fat-text">{{user.post}}</span> posts
-                            </li>
-                            <li class="profile__followers">
-                                <span class="profile__number u-fat-text">{{user.follower}}</span> followers
-                            </li>
-                            <li class="profile__following">
-                                <span class="profile__number u-fat-text">{{user.following}}</span> following
-                            </li>
-                        </ul>
-                        <div class="profile__bio">
-                            <span class="profile__full-name u-fat-text">{{user.name}}</span>
-                            <p class="profile__full-bio">{{user.bio}}</p>
-                            
-                        </div>
-                    </div>
+                    <h4 class="profile-form__title">{{user.username}}</h4>
                 </header>
-                <div class="profile__pictures">
-                    {% for feed in feeds %}
-                    <div class="col-4 div_pictures my-auto">
-                        <img
-                            src={{feed.img}}
-                            class="profile-picture__picture"
+                <form method="post" action="/editSubmit" class="edit-profile__form">
+                    <div class="edit-profile__form-row">
+                        <label for="name" class="edit-profile__label">Name
+                        </label>
+                        <input 
+                            id="name"
+                            name="name"
+                            type="text"
+                            value={{user.name}}
+                            class="edit-profile__input"
                         />
-                    
-                        <div class="profile-picture__overlay">
-                            <span class="profile-picture__number">
-                                <i class="fa fa-heart"></i> {{feed.no_of_likes}}
-                            </span>
-                            
-                        </div>
                     </div>
-                    {% endfor %}
+                  
+                    <div class="edit-profile__form-row">
+                        <label for="bio" class="edit-profile__label">
+                            Bio
+                        </label>
+                        <textarea id="bio" name="bio" class="edit-profile__textarea" value={{user.bio}}></textarea>
+                    </div>
+                    <div class="edit-profile__form-row">
+                        <label for="email" class="edit-profile__label">
+                            Phone/Email
+                        </label>
+                        <input 
+                            type="text"
+                            name="email"
+                            class="edit-profile__input"
+                            id="email"
+                            
+                        />
+                    </div>
                     
-                </div>
+                    <div class="edit-profile__form-row">
+                        <label for="gender" class="edit-profile__label">Gender</label>
+                        <select id="gender" name="gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="whatever">Whatever</option>
+                        </select>
+                    </div>
+                 
+                    <div class="edit-profile__form-row">
+                        <label class="edit-profile__label"></label>
+                        <input type="submit" value="Submit">
+                    </div>
+                </form>
             </section>
         </main>
         <footer class="footer">
@@ -107,17 +108,8 @@
                     <li class="footer__list-item"><a href="#" class="footer__link">language</a></li>
                 </ul>
             </nav>
-            <span class="footer__copyright">© 2020 instagram@SDSLabs</span>
+            <span class="footer__copyright">© 2017 instagram</span>
         </footer>
-        <div class="popUp">
-            <i class="fa fa-times fa-2x" id="closePopUp"></i>
-            <div class="popUp__container">
-                <div class="popUp__buttons">
-                    <a href="/logout" class="popUp__button">Log Out</a>
-                    <a href="#" class="popUp__button" id="cancelPopUp">Cancel</a>
-                </div>
-            </div>
-        </div>
         <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="

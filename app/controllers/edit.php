@@ -2,7 +2,7 @@
 
 namespace Controller;
 
-class Profile {
+class Edit {
     public static function post() {
         $_SESSION["authenticated"]=false;
         $username=$_POST["username"];
@@ -17,10 +17,8 @@ class Profile {
     $_SESSION["authenticated"]=\Model\User::checkCredentials($_SESSION["username"],$_SESSION["password"]);
       
         if($_SESSION["authenticated"]){
-        echo \View\Loader::make()->render("templates/profile.twig",array(
+        echo \View\Loader::make()->render("templates/edit.twig",array(
             "user" => \Model\User::getUserData(),
-            "feeds" => \Model\Feed::getFeedOfUser(),
-        
         ));
         }
         else{
@@ -32,12 +30,9 @@ class Profile {
     $_SESSION["authenticated"]=\Model\User::checkCredentials($_SESSION["username"],$_SESSION["password"]);
       
         if($_SESSION["authenticated"]){
-        echo \View\Loader::make()->render("templates/profile.twig",array(
+        echo \View\Loader::make()->render("templates/edit.twig",array(
         "user" => \Model\User::getUserData(),
-        "feeds" => \Model\Feed::getFeedOfUser(),
-    
-
-        ));
+         ));
         }
         else{
             echo "you are not authenticated";
