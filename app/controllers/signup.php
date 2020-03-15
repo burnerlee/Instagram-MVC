@@ -12,7 +12,7 @@ class Signup {
         $contact=$_POST["contact-details"];
         $name=$_POST["name"];
         \Model\User::createUser($username,$password,$contact,$name);
-        header("Location: /");
+        
     }
     
     
