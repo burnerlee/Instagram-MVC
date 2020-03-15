@@ -58,4 +58,23 @@ class User {
             {
                 echo "error";
             }
-        }}
+        }
+    public static function getUserData(){
+        $db = \DB::get_instance();
+        try{
+            $sql = $db->prepare("SELECT * FROM users WHERE username = :username");
+            $sql->execute(
+                array(
+                    ":username" => $_SESSION["username"],                    
+                )
+            );
+            $row = $sql->fetch(PDO::FETCH_ASSOC);
+            return $row;
+           
+            }
+            catch(PDOException $e)
+            {
+                echo "error";
+            }
+    }
+}
