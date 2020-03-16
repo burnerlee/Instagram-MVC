@@ -14,6 +14,7 @@ class Post {
         $filePath=$filePath.$filename;
         $username=$_SESSION["username"];
         \Model\Post::create($username,$filePath,$caption);
+        \Model\User::incPost();
         header("Location:/feed");
   
     }

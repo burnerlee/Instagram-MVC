@@ -108,4 +108,14 @@ class User {
             $stmt->execute($data);
         }
     }
+    public static function incPost(){
+        $db = \DB::get_instance();
+        $sql = "UPDATE users SET post=post+1 WHERE username=:username";
+        $stmt=$db->prepare($sql);
+        $data=[
+            ":username"=>$_SESSION["username"]
+        ];
+        $stmt->execute($data);
+      
+    }
 }

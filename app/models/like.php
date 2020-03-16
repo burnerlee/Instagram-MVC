@@ -7,7 +7,7 @@ class Like {
 
     public static function addLike($feed_id) {
         $db = \DB::get_instance();
-        $sql = "UPDATE feeds SET no_of_likes=no_of_likes+1 WHERE id=$feed_id";
+        $sql = "UPDATE feeds SET no_of_likes=no_of_likes+1 WHERE feed_id=$feed_id";
         $db->query($sql);
         $data = [
 
@@ -22,7 +22,7 @@ class Like {
     }
     public static function decLike($feed_id) {
         $db = \DB::get_instance();
-        $sql = "UPDATE feeds SET no_of_likes=no_of_likes-1 WHERE id=$feed_id";
+        $sql = "UPDATE feeds SET no_of_likes=no_of_likes-1 WHERE feed_id=$feed_id";
         $db->query($sql);
         $data = [
 
