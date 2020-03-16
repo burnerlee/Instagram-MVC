@@ -15,5 +15,6 @@ Toro::serve(array(
     "/profile"=>"\Controller\Profile",
     "/edit"=>"\Controller\Edit",
     "/editSubmit"=>"\Controller\EditSubmit",
+    "/trending"=>"\Controller\Trending",
     
 ));
