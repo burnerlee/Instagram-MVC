@@ -56,13 +56,15 @@
                         </div>
                         <ul class="profile__numbers">
                             <li class="profile__posts">
+                            <a href="/selfPosts">
                                 <span class="profile__number u-fat-text">{{user.post}}</span> posts
+                                </a>
                             </li>
                             <li class="profile__followers">
-                                <span class="profile__number u-fat-text">{{user.follower}}</span> followers
+                             <a href="/explore"> <span class="profile__number u-fat-text">  {{user.follower}}</span> followers</a>
                             </li>
                             <li class="profile__following">
-                                <span class="profile__number u-fat-text">{{user.following}}</span> following
+                              <a href="/explore">  <span class="profile__number u-fat-text">{{user.following}}</span> following</a>
                             </li>
                         </ul>
                         <div class="profile__bio">

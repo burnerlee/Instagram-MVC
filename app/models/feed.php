@@ -61,5 +61,16 @@ class Feed
                     }
                     return $result;
     }
+    public static function get_allSelf()
+    {
+        $db = \DB::get_instance();
+        $data=[
+        ":username" => $_SESSION["username"]
+        ];
+        $sql = $db->prepare("SELECT * FROM feeds INNER JOIN users ON feeds.username=users.username WHERE feeds.username=:username ORDER BY feeds.time DESC");
+        $sql->execute($data);
+        $rows=$sql->fetchAll();
+        return $rows; 
+    }
 
 }
