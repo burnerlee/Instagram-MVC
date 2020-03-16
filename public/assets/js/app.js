@@ -5,6 +5,7 @@ $(document).ready(function(){
         popUp = $('.popUp'),
         closePopUp = $('#closePopUp'),
         cancelPopUp = $('#cancelPopUp');
+    
 
     heart.click(function(){
         $(this).toggleClass('fa-heart-o');
@@ -21,6 +22,15 @@ $(document).ready(function(){
 
     cancelPopUp.click(function(){
         popUp.slideUp(500)
+    })
+
+    $('.story-img').click(function(){
+        $('.show-story').fadeIn(500);
+     
+        
+    })
+    $('.close-story').click(function(){
+        $('.show-story').fadeOut(500);
     })
 
 })
