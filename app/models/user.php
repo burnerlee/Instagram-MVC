@@ -98,11 +98,12 @@ class User {
             $stmt=$db->prepare($sql);
             $stmt->execute($data);
         }
-        if(isset($bio)){}
-        else{
+        if(isset($bio)){
+        
             $sql = "UPDATE users SET bio=:bio WHERE username=:username";
             $data=[
-                ":bio"=>$bio
+                ":bio"=>$bio,
+                ":username"=>$_SESSION["username"]
             ];
             $stmt=$db->prepare($sql);
             $stmt->execute($data);
@@ -117,5 +118,22 @@ class User {
         ];
         $stmt->execute($data);
       
+    }
+    public static function getAllOtherUsers(){
+        $db = \DB::get_instance();
+        try{
+            $sql = $db->prepare("SELECT * FROM users WHERE username!=:username");
+            $data=[
+                "username"=>$_SESSION["username"]
+            ];
+            $sql->execute($data);
+            $rows = $sql->fetchAll();
+            return $rows;
+           
+            }
+            catch(PDOException $e)
+            {
+                echo "error";
+            }
     }
 }

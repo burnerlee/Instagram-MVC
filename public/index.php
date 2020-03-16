@@ -16,5 +16,9 @@ Toro::serve(array(
     "/edit"=>"\Controller\Edit",
     "/editSubmit"=>"\Controller\EditSubmit",
     "/trending"=>"\Controller\Trending",
-    
+    "/explore"=>"\Controller\Explore",
+    "/follow"=>"\Controller\Follow",
+    "/unfollow"=>"\Controller\Unfollow",
+    "/followPost"=>"\Controller\FollowPosts",
+
 ));

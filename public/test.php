@@ -1,6 +1,6 @@
 <?php
 
-use function PHPSTORM_META\type;
+
 
 class DB {
     private static $instance;
@@ -20,21 +20,28 @@ class DB {
 }
 
 $db = \DB::get_instance();
+$a=[];
+            $data=[
+            ":username" => "burnerlee"
+            ];
+            $sql = $db->prepare("SELECT * from followers WHERE follower_username=:username");
+            $sql->execute($data);
+            while($userData=$sql->fetch()){
+                $user=$userData["follow_username"];
+                array_push($a,$user);
+                
+                }
+            $result=[];
+            foreach($a as $user){
+            $sql = $db->prepare("SELECT * from feeds WHERE username=:username");
+            $data=[
+                ":username"=>$user
+            ];
+            $sql->execute($data);
+            while($row=$sql->fetch()){
+                array_push($result,$row);
+                
+                }
 
-$a=array();
-
-$stmt1 = $db->query("SELECT * FROM users");
-while($userData=$stmt1->fetch(PDO::FETCH_ASSOC)){
-$user=$userData["username"];
-array_push($a,$user);
-
-}
-$result = [];
-foreach($a as $username){
-$table=$username."FeedTable";
-$stmt = $db->query("SELECT * FROM $table");
-array_push($result, $stmt->fetchAll());
-
-}
-
-var_dump($result);
+            }
+            var_dump($result);

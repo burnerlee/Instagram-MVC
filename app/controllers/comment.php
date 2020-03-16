@@ -10,6 +10,4 @@ class Comment {
      \Model\Comment::addComment($id,$content,$commentor_username);   
      header("Location: /feed");
     }
-   
-    
 }
