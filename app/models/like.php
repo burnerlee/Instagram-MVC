@@ -56,4 +56,14 @@ class Like {
           
        
     }
+    public static function getAllLiked($username){
+        $db = \DB::get_instance();
+        $data=[
+        ":username" => $username
+        ];
+        $sql = $db->prepare("SELECT * FROM likes WHERE liker_username=:username");
+        $sql->execute($data);
+        $rows=$sql->fetchAll();
+        return $rows; 
+    }
 }

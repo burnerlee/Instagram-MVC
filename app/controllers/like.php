@@ -12,7 +12,7 @@ class Like {
      else{
      \Model\Like::addLike($feed_id);
      }
-     header("location: /feed");
+    
     }
    
     

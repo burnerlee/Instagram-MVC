@@ -80,15 +80,22 @@
             </div>
             <div class="photo__info">
                 <div class="photo__icons">
+                {% set liked = 0 %}
                     <span class="photo__icon">
-                        <a href="/Like?feed_id={{feed.feed_id}}">
-                            <i class="fa fa-heart-o heart fa-lg"></i>
-                        </a>
+                   {% for liked_feed in liked_feeds %}
+                   {% if (liked_feed.feed_id==feed.feed_id) %}
+                   {% set liked = 1 %}
+                    <i class="fa heart-red fa-heart heart fa-lg like_icon" id="{{feed.feed_id}}"></i>
+                     {% endif %}
+                     {% endfor %}
+                     {% if (liked == 0) %}
+                            <i class="fa fa-heart-o heart fa-lg like_icon" id="{{feed.feed_id}}"></i>
+                     {% endif %}
                     </span>
                     <span class="photo__icon">
-                        <a href="#comment_text{{feed.feed_id}}">
-                            <i class="fa fa-comment-o fa-lg"></i>
-                        </a>
+                        
+                            <i class="fa fa-comment-o fa-lg" id="{{feed.feed_id}}"></i>
+                       
                     </span>
                 </div>
                 <span class="photo__likes">{{feed.no_of_likes}} Likes</span>
@@ -111,12 +118,12 @@
                 </ul>
                 <span class="photo__time-ago">{{feed.time}}</span>
                 <div class="photo__add-comment-container">
-                    <form method="post" action="/addComment">
-                        <input value={{feed.feed_id}} name="id" hidden></input>
-                        <textarea id="comment_text{{feed.id}}" placeholder="Add a comment..." class="photo__add-comment"
-                            name="content" required></textarea>
-                        <input type="submit"></input>
-                    </form>
+                
+                        
+                        <input id="commenttext_{{feed.feed_id}}" placeholder="Add a comment..." class="photo__add-comment" type="text"
+                            name="content" required>
+                        <button class="btn btn-primary commentsubmit" id="{{feed.feed_id}}" type="submit">Submit</input>
+                    
                     <i class="fa fa-ellipsis-h"></i>
                 </div>
             </div>

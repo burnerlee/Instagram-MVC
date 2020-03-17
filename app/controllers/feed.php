@@ -22,6 +22,8 @@ class Feed {
         "feeds" => \Model\Feed::get_all(),
         "comments" => \Model\Comment::getComments(),
         "follows"=>\Model\Follow::getAllFollowing(),
+        "liked_feeds"=>\Model\Like::getAllLiked($_SESSION["username"]),
+        "user"=>\Model\User::getUserData($_SESSION["username"]),
         ));
         }
         else{
@@ -38,6 +40,7 @@ class Feed {
         "comments" => \Model\Comment::getComments(),
         "user"=>\Model\User::getUserData($_SESSION["username"]),
         "follows"=>\Model\Follow::getAllFollowing(),
+        "liked_feeds"=>\Model\Like::getAllLiked($_SESSION["username"]),
         ));
         }
         else{

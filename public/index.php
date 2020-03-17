@@ -11,7 +11,7 @@ Toro::serve(array(
     "/signup" => "\Controller\Signup",
     "/addComment"=> "\Controller\Comment",
     "/logout"=> "\Controller\Logout",
-    "/Like"=>"\Controller\Like",
+    "/like"=>"\Controller\Like",
     "/profile"=>"\Controller\Profile",
     "/edit"=>"\Controller\Edit",
     "/editSubmit"=>"\Controller\EditSubmit",
@@ -23,5 +23,5 @@ Toro::serve(array(
     "/selfPosts"=>"\Controller\SelfPosts",
     "/addstory"=>"\Controller\AddStory",
     "/storyWorking"=>"\Controller\StoryWorking",
-
+    "/authenticate"=>"\Controller\Authenticate"
 ));

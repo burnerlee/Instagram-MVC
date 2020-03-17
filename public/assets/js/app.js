@@ -8,10 +8,10 @@ $(document).ready(function () {
         cancelPopUp = $('#cancelPopUp');
 
 
-    heart.click(function () {
-        $(this).toggleClass('fa-heart-o');
-        $(this).toggleClass('heart-red fa-heart');
-    })
+    // heart.click(function () {
+    //     $(this).toggleClass('fa-heart-o');
+    //     $(this).toggleClass('heart-red fa-heart');
+    // })
 
     cog.click(function () {
         popUp.fadeIn(500);
@@ -23,6 +23,18 @@ $(document).ready(function () {
 
     cancelPopUp.click(function () {
         popUp.slideUp(500)
+    })
+   heart.click(function(){
+    
+        $.ajax({ type: 'get', url: '/like', data: { response: 1,feed_id:event.target.id},success:function(response){
+           
+        }}); 
+        document.location.reload(true)
+    });
+    $('.fa-comment-o').click(function(event){
+       var element="commenttext_"+event.target.id;
+     
+       document.getElementById(element).focus();
     })
 
     $('.story-img').click(function (event) {
@@ -53,6 +65,14 @@ $(document).ready(function () {
 
        
 
+    })
+    $(".commentsubmit").click(function(event){
+    var id=event.target.id;
+    var a="commenttext_"+id;
+    var content=document.getElementById(a).value;
+        $.ajax({ type: 'post', url: '/addComment', data: {content:content,id:id},success:function(response){
+            document.location.reload(true)
+        }}); 
     })
     $(".carousel").on('slide.bs.carousel', function (event) {
         console.log(event);
