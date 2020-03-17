@@ -59,13 +59,13 @@ class User {
                 echo "error";
             }
         }
-    public static function getUserData(){
+    public static function getUserData($username){
         $db = \DB::get_instance();
         try{
             $sql = $db->prepare("SELECT * FROM users WHERE username = :username");
             $sql->execute(
                 array(
-                    ":username" => $_SESSION["username"],                    
+                    ":username" =>$username,                    
                 )
             );
             $row = $sql->fetch(PDO::FETCH_ASSOC);

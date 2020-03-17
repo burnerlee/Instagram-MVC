@@ -21,4 +21,7 @@ Toro::serve(array(
     "/unfollow"=>"\Controller\Unfollow",
     "/followPost"=>"\Controller\FollowPosts",
     "/selfPosts"=>"\Controller\SelfPosts",
+    "/addstory"=>"\Controller\AddStory",
+    "/storyWorking"=>"\Controller\StoryWorking",
+
 ));

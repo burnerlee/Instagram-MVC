@@ -18,7 +18,7 @@ class Profile {
       
         if($_SESSION["authenticated"]){
         echo \View\Loader::make()->render("templates/profile.twig",array(
-            "user" => \Model\User::getUserData(),
+            "user" => \Model\User::getUserData($_SESSION["username"]),
             "feeds" => \Model\Feed::getFeedOfUser(),
         
         ));
@@ -33,7 +33,7 @@ class Profile {
       
         if($_SESSION["authenticated"]){
         echo \View\Loader::make()->render("templates/profile.twig",array(
-        "user" => \Model\User::getUserData(),
+        "user" => \Model\User::getUserData($_SESSION["username"]),
         "feeds" => \Model\Feed::getFeedOfUser(),
     
 

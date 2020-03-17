@@ -25,27 +25,46 @@ $(document).ready(function () {
         popUp.slideUp(500)
     })
 
-    $('.story-img').click(function () {
+    $('.story-img').click(function (event) {
+        console.log(event.target.id);
+        $.ajax({ type: 'post', url: '/storyWorking', data: { response: 1,username:event.target.id}, success: function (response) {
+        $('.story-content').append(response);
+            
+       
+      
+
+
         $('.carousel').carousel(0);
-        $('.show-story').fadeIn(500);
-        loadLine();
+            $('.show-story').fadeIn(500);
+            $(document).on("click",".close-story",function(){
+                console.log("close");
+                $('.show-story').remove();
+            });
+            $(document).on("mouseenter",".carousel",function(){
+               line_pause=true;
+            });
+            $(document).on("mouseleave",".carousel",function(){
+                line_pause=false;
+             });
+            loadLine();
+         }});
 
     })
-    $('.close-story').click(function () {
-        $('.show-story').fadeOut(500);
+
+       
 
     })
     $(".carousel").on('slide.bs.carousel', function (event) {
         console.log(event);
         if (event.from == 2 && event.to == 0) {
-            $('.carousel').dispose;
-            $('.show-story').fadeOut(0);
-
+           
+            $('.show-story').remove();
+            
         }
         loadLine();
     })
 
-})
+
 
 function loadLine() {
     $('.progress-line').width(124);
@@ -53,19 +72,14 @@ function loadLine() {
         if(line_pause){}
         else{
         var width = $('.progress-line').width();
-        width -= 0.2;
+        width -= 0.1;
 
 
         $('.progress-line').width(width);
 
         if ($('.progress-line').width() == 0) {
-            $(".carousel").carousel("next");
+            $(".show-story").remove();
             clearInterval(id);
         }}
     }, 10);
 }
-$('.carousel').hover(function(){
-    line_pause=true;
-},function(){
-    line_pause=false;
-});

@@ -18,7 +18,7 @@ class Edit {
       
         if($_SESSION["authenticated"]){
         echo \View\Loader::make()->render("templates/edit.twig",array(
-            "user" => \Model\User::getUserData(),
+            "user" => \Model\User::getUserData($_SESSION["username"]),
         ));
         }
         else{
@@ -31,7 +31,7 @@ class Edit {
       
         if($_SESSION["authenticated"]){
         echo \View\Loader::make()->render("templates/edit.twig",array(
-        "user" => \Model\User::getUserData(),
+        "user" => \Model\User::getUserData($_SESSION["username"]),
          ));
         }
         else{

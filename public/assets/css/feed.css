@@ -190,3 +190,13 @@ input.textInput::placeholder{
     position: fixed;
     z-index: 10;
 }
+.story-add{
+    border-radius: 100%;
+    height:80px;
+    border: solid 4px pink;
+    width: 80px;
+    margin-bottom: 15%;
+}
+.story-add:hover{
+    border: solid 6px darkmagenta;
+}

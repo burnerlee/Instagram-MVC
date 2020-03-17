@@ -21,6 +21,7 @@ class Feed {
         echo \View\Loader::make()->render("templates/render_posts.twig",array(
         "feeds" => \Model\Feed::get_all(),
         "comments" => \Model\Comment::getComments(),
+        "follows"=>\Model\Follow::getAllFollowing(),
         ));
         }
         else{
@@ -35,8 +36,8 @@ class Feed {
         echo \View\Loader::make()->render("templates/render_posts.twig",array(
         "feeds" => \Model\Feed::get_all(),
         "comments" => \Model\Comment::getComments(),
-    
-
+        "user"=>\Model\User::getUserData($_SESSION["username"]),
+        "follows"=>\Model\Follow::getAllFollowing(),
         ));
         }
         else{
