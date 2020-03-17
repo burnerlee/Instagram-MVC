@@ -6,24 +6,6 @@
     <main class="explore">
         <section class="people">
             <ul class="people__list">
-                {% for nonfollow in nonfollows %}
-                <li class="people__person">
-                    <div class="people__column">
-                        <div class="people__avatar-container">
-                            <img src={{nonfollow.user_image}} class="people__avatar" />
-                        </div>
-                        <div class="people__info">
-                            <span class="people__username">{{nonfollow.username}}</span>
-                            <span class="people__full-name">{{nonfollow.name}}</span>
-                        </div>
-                    </div>
-                    <div class="people__column">
-                        <a href="/follow?username={{nonfollow.username}}">Follow</a>
-                    </div>
-                </li>
-                {% endfor %}
-            </ul>
-            <ul class="people__list">
                 {% for follow in follows %}
                 <li class="people__person">
                     <div class="people__column">
@@ -37,11 +19,12 @@
                     </div>
                     <div class="people__column">
 
-                        <a href="/unfollow?username={{follow.username}}&back=explore">Following !</a></button>
+                        <a href="/unfollow?username={{follow.username}}&back=following">Following !</a></button>
                     </div>
                 </li>
                 {% endfor %}
             </ul>
+
         </section>
     </main>
     {% include("templates/footer.twig") %}

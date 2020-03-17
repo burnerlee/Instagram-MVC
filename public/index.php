@@ -23,5 +23,8 @@ Toro::serve(array(
     "/selfPosts"=>"\Controller\SelfPosts",
     "/addstory"=>"\Controller\AddStory",
     "/storyWorking"=>"\Controller\StoryWorking",
-    "/authenticate"=>"\Controller\Authenticate"
+    "/authenticate"=>"\Controller\Authenticate",
+    "/followers"=>"\Controller\Followers",
+    "/following"=>"\Controller\Following"
+
 ));

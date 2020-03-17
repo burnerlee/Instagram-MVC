@@ -1,0 +1,31 @@
+{% include("templates/header.twig") %}
+
+<body>
+    {% include("templates/navbar.twig") %}
+    </nav>
+    <main class="explore">
+        <section class="people">
+            <ul class="people__list">
+                {% for follower in followers %}
+                <li class="people__person">
+                    <div class="people__column">
+                        <div class="people__avatar-container">
+                            <img src={{follower.user_image}} class="people__avatar" />
+                        </div>
+                        <div class="people__info">
+                            <span class="people__username">{{follower.username}}</span>
+                            <span class="people__full-name">{{follower.name}}</span>
+                        </div>
+                    </div>
+                    <div class="people__column">
+
+                        <button>Following You!</button>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+    {% include("templates/footer.twig") %}
+
+    </html>

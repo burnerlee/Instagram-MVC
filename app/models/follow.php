@@ -65,5 +65,16 @@ class Follow
         $rows = $stmt->fetchAll();
         return $rows;
     }
+    public static function getAllFollowers()                                    // returns all followers of the user
+    {
+        $db = \DB::get_instance();
+        $stmt = $db->prepare("SELECT * FROM followers INNER JOIN users ON followers.follow_username=users.username WHERE follow_username=:username");
+        $data = [
+            ":username" => $_SESSION["username"],
+        ];
+        $stmt->execute($data);
+        $rows = $stmt->fetchAll();
+        return $rows;
+    }
 
 }
