@@ -97,21 +97,6 @@
     height: 250px;
 }
 
-.profile-picture__overlay{
-    background-color: rgba(0,0,0,0.3);
-    width: 293px;
-    height: 100%;
-    position: absolute;
-    top:0;
-    left:0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color:white;
-    opacity: 0;
-    transition:opacity .5s ease-in-out;
-}
-
 .profile-picture:hover .profile-picture__overlay{
     opacity: 1;
 }
@@ -133,34 +118,6 @@
 #cog:hover{
     transform: rotate(1turn);
 }
-
-/*.profile__name{
-    animation: .6s popIn ease-out forwards;
-    opacity: 0;
-}
-
-.profile__numbers{
-    animation: .6s popIn ease-out forwards;
-    opacity: 0;
-    animation-delay: .6s;
-}
-
-.profile__bio{
-    animation: .6s popIn ease-out forwards;
-    opacity: 0;
-    animation-delay: 1.2s;
-}*/
-
-/*@keyframes popIn{
-    from{
-        transform: translateY(-20px) scale(.8);
-        opacity: 0;
-    }
-    to{
-        transform:none;
-        opacity: 1;
-    }
-}*/
 
 .fa-heart{
     animation:bump .6s infinite linear;

@@ -14,7 +14,12 @@ class Signup
         $password = $_POST["password"];
         $contact = $_POST["contact-details"];
         $name = $_POST["name"];
-        \Model\User::createUser($username, $password, $contact, $name);
+        $hash= hash('ripemd160', $password);
+        if(\Model\User::createdUser($username, $hash, $contact, $name)){
+            $_SESSION["auth"]="true";
+            $_SESSION["username"]=$username;
+            header("Location: /");
+        }
 
     }
 

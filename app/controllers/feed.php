@@ -2,15 +2,13 @@
 
 namespace Controller;
 
+session_start();
 class Feed
 {
     public static function get()
     {
-        if (isset($_SESSION["username"])) {
-            $_SESSION["authenticated"] = \Model\User::checkCredentials($_SESSION["username"], $_SESSION["password"]);
-        }
 
-        if ($_SESSION["authenticated"]) {
+        if ($_SESSION["auth"] == "true") {
             echo \View\Loader::make()->render("templates/render_feeds_main.twig", array(
                 "feeds" => \Model\Feed::get_all(),
                 "comments" => \Model\Comment::getComments(),

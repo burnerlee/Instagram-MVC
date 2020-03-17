@@ -17,7 +17,7 @@ class Comment {
         $stmt->execute($data);
        
     }
-    public static function getComments(){                                               //get all the comments from the database
+    public static function getComments(){                                               //gets all the comments from the database
         $db = \DB::get_instance();
         $stmt = $db->prepare("SELECT * FROM comments");
         $stmt->execute();

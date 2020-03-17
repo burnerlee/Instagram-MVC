@@ -7,7 +7,7 @@ class Logout
 {
     public function get()
     {
-        $_SESSION["authenticated"] = false;
+        $_SESSION["auth"] = "false";
         session_destroy();
         header("location: /");
     }

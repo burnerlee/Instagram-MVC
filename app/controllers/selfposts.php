@@ -6,10 +6,8 @@ class SelfPosts
 {
     public static function get()
     {
-        if (isset($_SESSION["username"])) {
-            $_SESSION["authenticated"] = \Model\User::checkCredentials($_SESSION["username"], $_SESSION["password"]);
-        }
-        if ($_SESSION["authenticated"]) {
+       
+        if ($_SESSION["auth"]=="true") {
             echo \View\Loader::make()->render("templates/render_feeds_non_main.twig", array(
                 "feeds" => \Model\Feed::get_allSelf(),
                 "comments" => \Model\Comment::getComments(),
