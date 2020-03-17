@@ -169,13 +169,24 @@ input.textInput::placeholder{
 }
 .close-story{
     position: relative;
-    left:65%;
+    left:55%;
 }
-.story-images{
+.story-image{
     position: fixed;
     left:40%;
     top:30%;
     width: 20%;
     height: 60%;
+    z-index: 10;
+}
+.progress-line{
+    width:10%;
+    background-color: white;
+    
+    border-radius: 5%;
+    top:25%;
+    left:45%;
+    height: 4px;
+    position: fixed;
     z-index: 10;
 }
