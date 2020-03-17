@@ -4,7 +4,7 @@ namespace Model;
 
 class Comment {
 
-    public static function addComment($id,$content,$commentor_username) {
+    public static function addComment($id,$content,$commentor_username) {               //store the comment in the database             
         $db = \DB::get_instance();
         $data = [
 
@@ -17,7 +17,7 @@ class Comment {
         $stmt->execute($data);
        
     }
-    public static function getComments(){
+    public static function getComments(){                                               //get all the comments from the database
         $db = \DB::get_instance();
         $stmt = $db->prepare("SELECT * FROM comments");
         $stmt->execute();

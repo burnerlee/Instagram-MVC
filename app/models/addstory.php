@@ -2,23 +2,20 @@
 
 namespace Model;
 
-class AddStory {
+class AddStory
+{
+    public static function create($username, $filepath) //function adds a photo to a story
 
-    public static function createStoryTable($username){
-
-    }
-    public static function create($username,$filepath){
-        $tableName=$username."_story";
+    {
+        $tableName = $username . "_story";
         $db = \DB::get_instance();
         $data = [
-            
-            'img' => $filepath
-            
+            'img' => $filepath,
         ];
         $sql = "INSERT INTO $tableName (img) VALUES (:img)";
         $stmt = $db->prepare($sql);
         $stmt->execute($data);
         header("location: /feed");
     }
-    
+
 }

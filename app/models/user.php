@@ -2,13 +2,13 @@
 
 namespace Model;
 
-use DB;
+
 use PDOException;
 use PDO;
 
 class User {
 
-    public static function createUser($username,$password,$contact,$name) {
+    public static function createUser($username,$password,$contact,$name) {                             //creates a new user
         $db = \DB::get_instance();
         try{
             $sql = $db->prepare("SELECT * FROM users WHERE username = :username");
@@ -37,7 +37,7 @@ class User {
        
        
     }
-    public static function checkCredentials($username,$password){
+    public static function checkCredentials($username,$password){                                       //checks whether credentials of user is correct and authenticates
         $db = \DB::get_instance();
         try{
             $sql = $db->prepare("SELECT * FROM users WHERE username = :username");
@@ -59,7 +59,7 @@ class User {
                 echo "error";
             }
         }
-    public static function getUserData($username){
+    public static function getUserData($username){          // returns user data
         $db = \DB::get_instance();
         try{
             $sql = $db->prepare("SELECT * FROM users WHERE username = :username");
@@ -77,13 +77,14 @@ class User {
                 echo "error";
             }
     }
-    public static function updateUserData($name,$bio,$email,$gender,$filepath){
-        $db = \DB::get_instance();
-        $sql = "UPDATE users SET name=:name,email=:email,gender=:gender WHERE username=:username";
+    public static function updateUserData($name,$bio,$email,$gender,$filepath){                     // update user data as he updates his profile
+        $db = \DB::get_instance();              
+        $sql = "UPDATE users SET name=:name,email=:email,gender=:gender,bio=:bio WHERE username=:username";
         $data=[
             ":name"=>$name,
             ":email"=>$email,
-            ":gender"=>$gender,            
+            ":gender"=>$gender,
+            ":bio"=>$bio,            
             ":username"=>$_SESSION["username"]
         ];
         $stmt=$db->prepare($sql);
@@ -98,18 +99,9 @@ class User {
             $stmt=$db->prepare($sql);
             $stmt->execute($data);
         }
-        if(isset($bio)){
-        
-            $sql = "UPDATE users SET bio=:bio WHERE username=:username";
-            $data=[
-                ":bio"=>$bio,
-                ":username"=>$_SESSION["username"]
-            ];
-            $stmt=$db->prepare($sql);
-            $stmt->execute($data);
-        }
+    
     }
-    public static function incPost(){
+    public static function incPost(){                                                           // increase the count of post of user
         $db = \DB::get_instance();
         $sql = "UPDATE users SET post=post+1 WHERE username=:username";
         $stmt=$db->prepare($sql);
@@ -119,7 +111,7 @@ class User {
         $stmt->execute($data);
       
     }
-    public static function getAllOtherUsers(){
+    public static function getAllOtherUsers(){                                                  // returns data of all users except himself
         $db = \DB::get_instance();
         try{
             $sql = $db->prepare("SELECT * FROM users WHERE username!=:username");

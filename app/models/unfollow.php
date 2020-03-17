@@ -4,7 +4,7 @@ namespace Model;
 
 class Unfollow {
 
-    public static function unfollow($follow_username,$follower_username) {
+    public static function unfollow($follow_username,$follower_username) {                  //unfollow a user
         $db = \DB::get_instance();
         $data = [
 

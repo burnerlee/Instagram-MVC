@@ -4,7 +4,7 @@ namespace Model;
 
 class Post {
 
-    public static function create($username,$filepath,$caption) {
+    public static function create($username,$filepath,$caption) {           // create a post
         $db = \DB::get_instance();
         $tableName="feeds";
         $data = [

@@ -1,132 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Profile | Instaclone</title>
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-        <link href="/assets/css/style.css" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    </head>
-    <body>
-        <nav class="navigation">
-            <a href="/feed">
-                <img 
-                    src="/assets/images/navLogo.png"
-                    alt="logo"
-                    title="logo"
-                    class="navigation__logo"
-                />
-            </a>
-            <div class="navigation__search-container">
-                <i class="fa fa-search"></i>
-                <input type="text" placeholder="Search">
-            </div>
-            <div class="navigation__icons">
-            <a href="/post" class="navigation__link">
-                    <i class="fa fa-camera"></i>
-                </a>
-                <a href="/explore" class="navigation__link">
-                    <i class="fa fa-compass"></i>
-                </a>
-                <a href="" class="navigation__link">
-                    <i class="fa fa-heart-o"></i>
-                </a>
-                <a href="/profile" class="navigation__link">
-                    <i class="fa fa-user-o"></i>
-                </a>
-            </div>
-        </nav>
-        <main class="profile-container">
-            <section class="profile">
-                <header class="profile__header">
-                    <div class="profile__avatar-container">
-                        <img 
-                            src={{user.user_image}}
-                            class="profile__avatar"
-                            alt="No Profile Picture"
-                        />
+{% include("templates/header.twig") %}
+
+<body>
+    {% include("templates/navbar.twig") %}
+    <main class="profile-container">
+        <section class="profile">
+            <header class="profile__header">
+                <div class="profile__avatar-container">
+                    <img src={{user.user_image}} class="profile__avatar" alt="No Profile Picture" />
+                </div>
+                <div class="profile__info">
+                    <div class="profile__name">
+                        <h1 class="profile__title">{{user.username}}</h1>
+                        <a href="/edit" class="profile__button u-fat-text">Edit profile</a>
+                        <i class="fa fa-cog fa-2x" id="cog"></i>
                     </div>
-                    <div class="profile__info">
-                        <div class="profile__name">
-                            <h1 class="profile__title">{{user.username}}</h1>
-                            <a href="/edit" class="profile__button u-fat-text">Edit profile</a>
-                            <i class="fa fa-cog fa-2x" id="cog"></i>
-                        </div>
-                        <ul class="profile__numbers">
-                            <li class="profile__posts">
+                    <ul class="profile__numbers">
+                        <li class="profile__posts">
                             <a href="/selfPosts">
                                 <span class="profile__number u-fat-text">{{user.post}}</span> posts
-                                </a>
-                            </li>
-                            <li class="profile__followers">
-                             <a href="/explore"> <span class="profile__number u-fat-text">  {{user.follower}}</span> followers</a>
-                            </li>
-                            <li class="profile__following">
-                              <a href="/explore">  <span class="profile__number u-fat-text">{{user.following}}</span> following</a>
-                            </li>
-                        </ul>
-                        <div class="profile__bio">
-                            <span class="profile__full-name u-fat-text">{{user.name}}</span>
-                            <p class="profile__full-bio">{{user.bio}}</p>
-                            
-                        </div>
+                            </a>
+                        </li>
+                        <li class="profile__followers">
+                            <a href="/explore"> <span class="profile__number u-fat-text"> {{user.follower}}</span>
+                                followers</a>
+                        </li>
+                        <li class="profile__following">
+                            <a href="/explore"> <span class="profile__number u-fat-text">{{user.following}}</span>
+                                following</a>
+                        </li>
+                    </ul>
+                    <div class="profile__bio">
+                        <span class="profile__full-name u-fat-text">{{user.name}}</span>
+                        <p class="profile__full-bio">{{user.bio}}</p>
+
                     </div>
-                </header>
-                <div class="profile__pictures">
-                    {% for feed in feeds %}
-                    <div class="col-4 div_pictures my-auto">
-                        <img
-                            src={{feed.img}}
-                            class="profile-picture__picture"
-                        />
-                    
-                        <div class="profile-picture__overlay">
-                            <span class="profile-picture__number">
-                                <i class="fa fa-heart"></i> {{feed.no_of_likes}}
-                            </span>
-                            
-                        </div>
+                </div>
+            </header>
+            <div class="profile__pictures">
+                {% for feed in feeds %}
+                <div class="col-4 div_pictures my-auto">
+                    <img src={{feed.img}} class="profile-picture__picture" />
+
+                    <div class="profile-picture__overlay">
+                        <span class="profile-picture__number">
+                            <i class="fa fa-heart"></i> {{feed.no_of_likes}}
+                        </span>
+
                     </div>
-                    {% endfor %}
-                    
                 </div>
-            </section>
-        </main>
-        <footer class="footer">
-            <nav class="footer__nav">
-                <ul class="footer__list">
-                    <li class="footer__list-item"><a href="#" class="footer__link">about us</a></li>
-                    <li class="footer__list-item"><a href="#" class="footer__link">support</a></li>
-                    <li class="footer__list-item"><a href="#" class="footer__link">blog</a></li>
-                    <li class="footer__list-item"><a href="#" class="footer__link">press</a></li>
-                    <li class="footer__list-item"><a href="#" class="footer__link">api</a></li>
-                    <li class="footer__list-item"><a href="#" class="footer__link">jobs</a></li>
-                    <li class="footer__list-item"><a href="#" class="footer__link">privacy</a></li>
-                    <li class="footer__list-item"><a href="#" class="footer__link">terms</a></li>
-                    <li class="footer__list-item"><a href="#" class="footer__link">directory</a></li>
-                    <li class="footer__list-item"><a href="#" class="footer__link">language</a></li>
-                </ul>
-            </nav>
-            <span class="footer__copyright">© 2020 instagram@SDSLabs</span>
-        </footer>
-        <div class="popUp">
-            <i class="fa fa-times fa-2x" id="closePopUp"></i>
-            <div class="popUp__container">
-                <div class="popUp__buttons">
-                    <a href="/logout" class="popUp__button">Log Out</a>
-                    <a href="#" class="popUp__button" id="cancelPopUp">Cancel</a>
-                </div>
+                {% endfor %}
+
             </div>
-        </div>
-        <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
-        <script src="/assets/js/app.js"></script>
-    </body>
-</html>
+        </section>
+    </main>
+    {% include("templates/footer.twig") %}

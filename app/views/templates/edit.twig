@@ -1,126 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Edit Profile | Instaclone</title>
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-        <link href="/assets/css/style.css" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    </head>
-    <body>
-        <nav class="navigation">
-            <a href="feed.html">
-                <img 
-                    src="/assets/images/navLogo.png"
-                    alt="logo"
-                    title="logo"
-                    class="navigation__logo"
-                />
-            </a>
-            <div class="navigation__search-container">
-                <i class="fa fa-search"></i>
-                <input type="text" placeholder="Search">
-            </div>
-            <div class="navigation__icons">
-                <a href="" class="navigation__link">
-                    <i class="fa fa-compass"></i>
-                </a>
-                <a href="" class="navigation__link">
-                    <i class="fa fa-heart-o"></i>
-                </a>
-                <a href="/profile" class="navigation__link">
-                    <i class="fa fa-user-o"></i>
-                </a>
-            </div>
-        </nav>
-        <main class="edit-profile">
-            <section class="profile-form">
-                <header class="profile-form__header">
-                    <div class="profile-form__avatar-container">
-                        <img 
-                            src={{user.user_image}}
-                            class="profile-form__avatar"
-                        />
-                    </div>
-                    <h4 class="profile-form__title">{{user.username}}</h4>
-                </header>
-                <form method="post" action="/editSubmit" class="edit-profile__form" enctype="multipart/form-data">
-                    <div class="edit-profile__form-row">
-                        <label for="name" class="edit-profile__label">Name
-                        </label>
-                        <input 
-                            id="name"
-                            name="name"
-                            type="text"
-                            value={{user.name}}
-                            class="edit-profile__input"
-                        />
-                    </div>
-                  <div class="edit-profile__form-row">
-                        <label for="profile_pic" class="edit-profile__label">
-                            Profile Picture:
-                        </label>
-                        <input  type="file" name="img_file" id="img_file"/>
-                    </div>
-                    <div class="edit-profile__form-row">
-                        <label for="bio" class="edit-profile__label">
-                            Bio
-                        </label>
-                        <textarea id="bio" name="bio" class="edit-profile__textarea" value={{user.bio}}></textarea>
-                    </div>
+{% include("templates/header.twig") %}
 
-                    <div class="edit-profile__form-row">
-                        <label for="email" class="edit-profile__label">
-                            Phone/Email
-                        </label>
-                        <input 
-                            type="text"
-                            name="email"
-                            class="edit-profile__inpeart.click(function () {
-    //     $(this).toggleClass('fa-heart-o');
-    //     $(this).toggleClass('heart-red fa-heart');
-    // })
-                        />
-                    </div>
-                    
-                    <div class="edit-profile__form-row">
-                        <label for="gender" class="edit-profile__label">Gender</label>
-                        <select id="gender" name="gender" value={{user.gender}}>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="whatever">Whatever</option>
-                        </select>
-                    </div>
-                 
-                    <div class="edit-profile__form-row">
-                        <label class="edit-profile__label"></label>
-                        <input type="submit" value="Submit">
-                    </div>
-                </form>
-            </section>
-        </main>
-        <footer class="footer">
-            <nav class="footer__nav">
-                <ul class="footer__list">
-                    <li class="footer__list-item"><a href="#" class="footer__link">about us</a></li>
-                    <li class="footer__list-item"><a href="#" class="footer__link">support</a></li>
-                    <li class="footer__list-item"><a href="#" class="footer__link">blog</a></li>
-                    <li class="footer__list-item"><a href="#" class="footer__link">press</a></li>
-                    <li class="footer__list-item"><a href="#" class="footer__link">api</a></li>
-                    <li class="footer__list-item"><a href="#" class="footer__link">jobs</a></li>
-                    <li class="footer__list-item"><a href="#" class="footer__link">privacy</a></li>
-                    <li class="footer__list-item"><a href="#" class="footer__link">terms</a></li>
-                    <li class="footer__list-item"><a href="#" class="footer__link">directory</a></li>
-                    <li class="footer__list-item"><a href="#" class="footer__link">language</a></li>
-                </ul>
-            </nav>
-            <span class="footer__copyright">© 2020 instagram@SDSLabs</span>
-        </footer>
-        <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
-        <script src="/assets/js/app.js"></script>
-    </body>
-</html>
+<body>
+    {% include("templates/navbar.twig") %}
+    <main class="edit-profile">
+        <section class="profile-form">
+            <header class="profile-form__header">
+                <div class="profile-form__avatar-container">
+                    <img src={{user.user_image}} class="profile-form__avatar" />
+                </div>
+                <h4 class="profile-form__title">{{user.username}}</h4>
+            </header>
+            <form method="post" action="/editSubmit" class="edit-profile__form" enctype="multipart/form-data">
+                <div class="edit-profile__form-row">
+                    <label for="name" class="edit-profile__label">Name
+                    </label>
+                    <input id="name" name="name" type="text" value={{user.name}} class="edit-profile__input" />
+                </div>
+                <div class="edit-profile__form-row">
+                    <label for="profile_pic" class="edit-profile__label">
+                        Profile Picture:
+                    </label>
+                    <input type="file" name="img_file" id="img_file" />
+                </div>
+                <div class="edit-profile__form-row">
+                    <label for="bio" class="edit-profile__label">
+                        Bio
+                    </label>
+                    <textarea id="bio" name="bio" class="edit-profile__textarea">{{user.bio}}</textarea>
+                </div>
+
+                <div class="edit-profile__form-row">
+                    <label for="email" class="edit-profile__label">
+                        Phone/Email
+                    </label>
+                    <input type="text" name="email" class="edit-profile__input" id="email" value={{user.email}} />
+                </div>
+
+                <div class="edit-profile__form-row">
+                    <label for="gender" class="edit-profile__label">Gender</label>
+                    <select id="gender" name="gender" value={{user.gender}}>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="whatever">Whatever</option>
+                    </select>
+                </div>
+
+                <div class="edit-profile__form-row">
+                    <label class="edit-profile__label"></label>
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </section>
+    </main>
+    {% include("templates/footer.twig") %}

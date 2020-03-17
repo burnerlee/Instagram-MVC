@@ -1,0 +1,70 @@
+<main class="feed">
+        {% for feed in feeds %}
+        <section class="photo">
+            <header class="photo__header">
+                <div class="photo__header-column">
+                    <img class="photo__avatar" src="{{feed.user_image}}" />
+                </div>
+                <div class="photo__header-column">
+                    <span class="photo__username">{{feed.username}}</span>
+
+                </div>
+            </header>
+            <div class="photo__file-container">
+                <img class="photo__file" src="{{feed.img}}" />
+            </div>
+            <div class="caption">
+                </span>
+            </div>
+            <div class="photo__info">
+                <div class="photo__icons">
+                    {% set liked = 0 %}
+                    <span class="photo__icon">
+                        {% for liked_feed in liked_feeds %}
+                        {% if (liked_feed.feed_id==feed.feed_id) %}
+                        {% set liked = 1 %}
+                        <i class="fa heart-red fa-heart heart fa-lg like_icon" id="{{feed.feed_id}}"></i>
+                        {% endif %}
+                        {% endfor %}
+                        {% if (liked == 0) %}
+                        <i class="fa fa-heart-o heart fa-lg like_icon" id="{{feed.feed_id}}"></i>
+                        {% endif %}
+                    </span>
+                    <span class="photo__icon">
+
+                        <i class="fa fa-comment-o fa-lg" id="{{feed.feed_id}}"></i>
+
+                    </span>
+                </div>
+                <span class="photo__likes">{{feed.no_of_likes}} Likes</span>
+                <ul class="photo__comments">
+                    <li>
+                        <span class="photo__likes">{{feed.username}}....{{feed.caption}}
+                    </li>
+                </ul>
+                <ul class="photo__comments">
+
+                    {% for comment in comments %}
+                    {% if (comment.feed_id==feed.feed_id) %}
+                    <li class="photo__comment">
+
+                        <span class="photo__comment-author">{{comment.commentor_username}}</span>{{comment.content}}
+
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+                <span class="photo__time-ago">{{feed.time}}</span>
+                <div class="photo__add-comment-container">
+
+
+                    <input id="commenttext_{{feed.feed_id}}" placeholder="Add a comment..." class="photo__add-comment"
+                        type="text" name="content" required>
+                    <button class="btn btn-primary commentsubmit" id="{{feed.feed_id}}" type="submit">Submit</input>
+
+                        <i class="fa fa-ellipsis-h"></i>
+                </div>
+            </div>
+        </section>
+        {% endfor %}
+</main>

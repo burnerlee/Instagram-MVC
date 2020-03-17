@@ -1,110 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Explore | Instaclone</title>
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-        <link href="/assets/css/style.css" rel="stylesheet">
-        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    </head>
-    <body>
-        <nav class="navigation">
-            <a href="/feed">
-                <img 
-                    src="/assets/images/navLogo.png"
-                    alt="logo"
-                    title="logo"
-                    class="navigation__logo"
-                />
-            </a>
-            <div class="navigation__search-container">
-                <i class="fa fa-search"></i>
-                <input type="text" placeholder="Search">
-            </div>
-            <div class="navigation__icons">
-                <a href="/explore" class="navigation__link">
-                    <i class="fa fa-compass"></i>
-                </a>
-                <a href="" class="navigation__link">
-                    <i class="fa fa-heart-o"></i>
-                </a>
-                <a href="/profile" class="navigation__link">
-                    <i class="fa fa-user-o"></i>
-                </a>
-            </div>
-        </nav>
-        <main class="explore">
-            <section class="people">
-                <ul class="people__list">
+{% include("templates/header.twig") %}
+
+<body>
+    {% include("templates/navbar.twig") %}
+    </nav>
+    <main class="explore">
+        <section class="people">
+            <ul class="people__list">
                 {% for nonfollow in nonfollows %}
-                    <li class="people__person">
-                        <div class="people__column">
-                            <div class="people__avatar-container">
-                                <img 
-                                    src={{nonfollow.user_image}}
-                                    class="people__avatar"
-
-                                />
-                            </div>
-                            <div class="people__info">
-                                <span class="people__username">{{nonfollow.username}}</span>
-                                <span class="people__full-name">{{nonfollow.name}}</span>
-                            </div>
+                <li class="people__person">
+                    <div class="people__column">
+                        <div class="people__avatar-container">
+                            <img src={{nonfollow.user_image}} class="people__avatar" />
                         </div>
-                        <div class="people__column">
-                            <a href="/follow?username={{nonfollow.username}}">Follow</a>
+                        <div class="people__info">
+                            <span class="people__username">{{nonfollow.username}}</span>
+                            <span class="people__full-name">{{nonfollow.name}}</span>
                         </div>
-                    </li>
-                   {% endfor %}
-                </ul>
-              <ul class="people__list">
+                    </div>
+                    <div class="people__column">
+                        <a href="/follow?username={{nonfollow.username}}">Follow</a>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+            <ul class="people__list">
                 {% for follow in follows %}
-                    <li class="people__person">
-                        <div class="people__column">
-                            <div class="people__avatar-container">
-                                <img 
-                                    src={{follow.user_image}}
-                                    class="people__avatar"
+                <li class="people__person">
+                    <div class="people__column">
+                        <div class="people__avatar-container">
+                            <img src={{follow.user_image}} class="people__avatar" />
+                        </div>
+                        <div class="people__info">
+                            <span class="people__username">{{follow.username}}</span>
+                            <span class="people__full-name">{{follow.name}}</span>
+                        </div>
+                    </div>
+                    <div class="people__column">
 
-                                />
-                            </div>
-                            <div class="people__info">
-                                <span class="people__username">{{follow.username}}</span>
-                                <span class="people__full-name">{{follow.name}}</span>
-                            </div>
-                        </div>
-                        <div class="people__column">
-                           
-                       <a href="/unfollow?username={{follow.username}}">Following !</a></button>
-                        </div>
-                    </li>
-                   {% endfor %}
-                </ul>
-            </section>
-        </main>
-        <footer class="footer">
-            <nav class="footer__nav">
-                <ul class="footer__list">
-                    <li class="footer__list-item"><a href="#" class="footer__link">about us</a></li>
-                    <li class="footer__list-item"><a href="#" class="footer__link">support</a></li>
-                    <li class="footer__list-item"><a href="#" class="footer__link">blog</a></li>
-                    <li class="footer__list-item"><a href="#" class="footer__link">press</a></li>
-                    <li class="footer__list-item"><a href="#" class="footer__link">api</a></li>
-                    <li class="footer__list-item"><a href="#" class="footer__link">jobs</a></li>
-                    <li class="footer__list-item"><a href="#" class="footer__link">privacy</a></li>
-                    <li class="footer__list-item"><a href="#" class="footer__link">terms</a></li>
-                    <li class="footer__list-item"><a href="#" class="footer__link">directory</a></li>
-                    <li class="footer__list-item"><a href="#" class="footer__link">language</a></li>
-                </ul>
-            </nav>
-            <span class="footer__copyright">© 2020 instagram@SDSLabs</span>
-        </footer>
-        <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
-        <script src="/assets/js/app.js"></script>
-    </body>
-</html>
+                        <a href="/unfollow?username={{follow.username}}">Following !</a></button>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+    {% include("templates/footer.twig") %}
+
+    </html>
