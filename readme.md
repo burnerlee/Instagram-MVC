@@ -4,20 +4,20 @@ Setup is the same as it was to setup the application we developed in the MVC-lec
 
 # Setup:
 
-Clone the repository and cd into it.
-Install composer using:
-curl -s https://getcomposer.org/installer | php
-sudo mv composer.phar /usr/local/bin/composer
-Install dependencies and dump-autoload:
-composer install
-composer dump-autoload
-Copy config/sample.config.php as config/config.php and edit it accordingly:
-cp config/sample.config.php config/config.php
-Edit the file using your mysql database credentials
-Import schema present in schema/schema.sql in your database.
-Serve the public folder at any port (say 8000):
-cd public
-php -S localhost:8000
+> Clone the repository and cd into it.
+> Install composer using:
+> curl -s https://getcomposer.org/installer | php
+> sudo mv composer.phar /usr/local/bin/composer
+> Install dependencies and dump-autoload:
+> composer install
+> composer dump-autoload
+> Copy config/sample.config.php as config/config.php and edit it accordingly:
+> cp config/sample.config.php config/config.php
+> Edit the file using your mysql database credentials
+> Import schema present in schema/schema.sql in your database.
+> Serve the public folder at any port (say 8000):
+> cd public
+> php -S localhost:8000
 
 # Features and usage of this webpage:
 
