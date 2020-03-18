@@ -2,23 +2,25 @@
 
 Setup is the same as it was to setup the application we developed in the MVC-lecture
 
-Setup:
+# Setup:
+
 Clone the repository and cd into it.
 Install composer using:
-> curl -s https://getcomposer.org/installer | php
-> sudo mv composer.phar /usr/local/bin/composer
+curl -s https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
 Install dependencies and dump-autoload:
-> composer install
-> composer dump-autoload
+composer install
+composer dump-autoload
 Copy config/sample.config.php as config/config.php and edit it accordingly:
-> cp config/sample.config.php config/config.php
-# Edit the file using your mysql database credentials
+cp config/sample.config.php config/config.php
+Edit the file using your mysql database credentials
 Import schema present in schema/schema.sql in your database.
 Serve the public folder at any port (say 8000):
-> cd public
-> php -S localhost:8000
+cd public
+php -S localhost:8000
 
-Features and usage of this webpage:
+# Features and usage of this webpage:
+
 1. The "/" page opens up the home login page where users can login using their username and password. Password is hash
 protected and is stored in the users table in the database. The username is unique for each user.
 2. If you are not registered on this website still, then go register yourself, click on the signup button which redirects to
@@ -40,4 +42,4 @@ couple of days... so for the meantime please do ignore it...
 12. Please suggest improvements ranging from security vunerabilities to code structure, whatever anyone feels like. I would be 
 more than happy to learn and resolve it.
 
-Thanks for reading
+# Thanks for reading
